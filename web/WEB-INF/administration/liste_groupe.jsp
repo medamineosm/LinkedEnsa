@@ -1,61 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ENSAK CV</title>
-    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/admin.css" />
-</head>
-
-<body>
-    <div id="wrapper">
-      
-      <!-- Sidebar -->
-      <div id="sidebar-wrapper">
-        <div class="sidebar-nav">
-          <div class="image-holder">
-            <img src="images/flat/admin.png">
-          </div>
-
-          <div class="admin-menu">
-            <ul class="sidebar-menu">
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                  ACCUEIL
-                </a>
-              </li>
-              <li>
-                <a href="#" class="active">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                  LISTE GROUPES
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                  CREATION GROUPES
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                  MESSAGE
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span class="glyphicon glyphicon-log-out"></span>
-                  DÃ‰CONNEXION
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>    
-      </div>
-          
+<%@include  file="HEADERADMIN.jsp" %>          
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="content-header">
@@ -89,6 +32,7 @@
                     <td>Filiere</td>
                     <td>Niveau</td>
                     <td>Promotion</td>
+                    <td>Nombre Etudiants</td>
                     <td>Options</td>
                   </tr>
                 </thead>
@@ -97,9 +41,10 @@
                     <td>1</td>
                     <td>Groupe GI</td>
                     <td>GI</td>
-                    <td>2 Ã©me annÃ©e</td>
+                    <td>2 ème année</td>
                     <td>2011/2016</td>
-                    <td><a class="btn btn-submit" href="#">Afficher</a></td>
+                    <td>10</td>
+                    <td><a href="RouterAdmin?route=ListerEtudiantGroupe&id_etudiant=1" class="btn btn-submit" href="#">Afficher</a></td>
                   </tr>    
                 </tbody>
               </table>

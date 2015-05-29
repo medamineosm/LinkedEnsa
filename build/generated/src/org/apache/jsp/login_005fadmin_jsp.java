@@ -68,12 +68,12 @@ public final class login_005fadmin_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("            \r\n");
       out.write("                <div class=\"col-lg-12\">\r\n");
       out.write("                    <h2>LOGIN FOR PROF</h2>\r\n");
-      out.write("                    <form class=\"bs-example form-horizontal\" method=\"POST\" action=\"\">\r\n");
+      out.write("                    <form class=\"bs-example form-horizontal\" method=\"POST\" action=\"AuthentificationServlet\">\r\n");
       out.write("                      <fieldset>\r\n");
       out.write("\r\n");
       out.write("                        <div class=\"form-group\">\r\n");
       out.write("                          <div class=\"col-lg-12\">\r\n");
-      out.write("                            <input class=\"form-control\" name=\"username\" placeholder=\"Username\" type=\"text\">\r\n");
+      out.write("                            <input class=\"form-control\" name=\"login\" placeholder=\"Username\" type=\"text\">\r\n");
       out.write("                          </div>\r\n");
       out.write("                        </div>\r\n");
       out.write("\r\n");

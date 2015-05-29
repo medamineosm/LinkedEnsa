@@ -37,7 +37,7 @@ public class AuthentificationServlet extends HttpServlet {
             else
             {
                 request.getSession().setAttribute("user", user);
-                request.getRequestDispatcher("/WEB-INF/acceuil_admin.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/administration/acceuil_admin.jsp").forward(request, response);
             }
         }
     }

@@ -4,9 +4,21 @@
         <servlet-name>AuthentificationServlet</servlet-name>
         <servlet-class>ma.ensa.linked.controller.AuthentificationServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Router</servlet-name>
+        <servlet-class>ma.ensa.linked.router.RouterAdmin</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RouterAdmin</servlet-name>
+        <servlet-class>ma.ensa.linked.router.RouterAdmin</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>AuthentificationServlet</servlet-name>
         <url-pattern>/AuthentificationServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RouterAdmin</servlet-name>
+        <url-pattern>/RouterAdmin</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
