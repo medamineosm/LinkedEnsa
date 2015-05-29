@@ -4,9 +4,9 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>ENSAK CV</title>
-    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" type="text/css" href="css/admin.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/admin.css" />
 </head>
 
 <body>
@@ -16,7 +16,7 @@
       <div id="sidebar-wrapper">
         <div class="sidebar-nav">
           <div class="image-holder">
-            <img src="images/flat/admin.png">
+            <img src="<%=request.getContextPath()%>/images/flat/admin.png">
           </div>
 
           <div class="admin-menu">

@@ -1,4 +1,11 @@
 <%@include  file="HEADERADMIN.jsp" %>          
+<%@page import="ma.ensa.linked.metier.Groupe"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ma.ensa.linked.metier.Professeur"%>
+<%
+    ArrayList<Groupe> groupes = (ArrayList<Groupe>)request.getAttribute("groupes");
+    ArrayList<Integer> counts = (ArrayList<Integer>)request.getAttribute("counts");
+%>
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="content-header">
@@ -17,7 +24,7 @@
             <div class="groupe-content">
               <div class="sub-line"></div>
               <div class="sub-title">
-                <div class="col-lg-4 row"><h3 class="row">Groupe</h3></div>
+                <div class="col-lg-5 row"><h3 class="row">Groupe de <%= ((Professeur)request.getSession().getAttribute("user")).getNom() %></h3></div>
               </div>
             </div>
           </div>
@@ -27,7 +34,6 @@
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <td>#</td>
                     <td>Nom du Groupe</td>
                     <td>Filiere</td>
                     <td>Niveau</td>
@@ -37,15 +43,22 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Groupe GI</td>
-                    <td>GI</td>
-                    <td>2 ème année</td>
-                    <td>2011/2016</td>
-                    <td>10</td>
-                    <td><a href="RouterAdmin?route=ListerEtudiantGroupe&id_etudiant=1" class="btn btn-submit" href="#">Afficher</a></td>
-                  </tr>    
+                  <%
+                    for(int i=0;i<groupes.size();i++)
+                    {
+                        Groupe g = groupes.get(i);
+                  %>
+                <tr>
+                    <td><%= g.getNom() %></td>
+                    <td><%= g.getFiliere() %></td>
+                    <td><%= g.getNiveau() %></td>
+                    <td><%= g.getNiveau() %></td>
+                    <td><%= counts.get(i) %></td>  
+                    <td><a href="<%= request.getContextPath() %>/administration/detailsGroupe?id=<%= g.getIdentifiant() %>" class="btn btn-submit" href="#">Afficher</a></td>
+                  </tr>
+                  <%
+                    }
+                  %>    
                 </tbody>
               </table>
 
@@ -76,5 +89,4 @@
       $('#excelFile').val($(this).val());
       });
     </script>
-</body>
-</html>
+    <%@include file="FOOTERADMIN.jsp" %>

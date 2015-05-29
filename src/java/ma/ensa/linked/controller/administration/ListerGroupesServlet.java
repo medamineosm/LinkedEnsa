@@ -34,7 +34,7 @@ public class ListerGroupesServlet extends HttpServlet {
         request.setAttribute("groupes", groupes);
         request.setAttribute("counts", counts);
         
-        request.getRequestDispatcher("/administration/liste_groupes.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/administration/liste_groupe.jsp").forward(request, response);
     }
 
 }

@@ -32,7 +32,8 @@ public class RouterAdmin extends HttpServlet {
                     request.getRequestDispatcher("/WEB-INF/administration/ajouter_groupe.jsp").forward(request, response);
                 break;
             case "ListerGroupe":
-                    request.getRequestDispatcher("administration/listerGroupes").forward(request, response);
+                    response.sendRedirect(request.getContextPath()+"/administration/listerGroupes");
+                    
                 break;
             case "ProfileEtudiant":
                     request.getRequestDispatcher("/WEB-INF/Error.jsp").forward(request, response);

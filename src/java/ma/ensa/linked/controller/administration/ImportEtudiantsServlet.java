@@ -99,7 +99,6 @@ public class ImportEtudiantsServlet extends HttpServlet {
                         Logger.getLogger(ImportEtudiantsServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
                     
-                    
             
          }
     }

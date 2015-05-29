@@ -12,6 +12,7 @@ package ma.ensa.linked.service;
 public class test {
     public static void main(String[] args)
     {
-        System.out.println(UtilisateurService.authentifierUtilisateur("admin", "admin"));
+        //System.out.println(UtilisateurService.authentifierUtilisateur("admin", "admin"));
+        System.out.println(GroupeService.getGroupesByProf(ProfesseurService.getProfesseurById("yunho")));
     }
 }

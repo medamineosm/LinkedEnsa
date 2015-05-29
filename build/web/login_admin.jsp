@@ -54,7 +54,7 @@
     <footer>
         <div class="container">
             <div class="col-lg-6">
-                <p>Copyright Â© 2014 CV ENSAK, All Rights Reserved.</p>
+                <p>Copyright © 2014 CV ENSAK, All Rights Reserved.</p>
             </div>
         </div>
     </footer>
