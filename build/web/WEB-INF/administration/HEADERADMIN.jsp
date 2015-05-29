@@ -28,13 +28,13 @@
                 </a>
               </li>
               <li>
-                <a href="RouterAdmin?route=ListerGroupe">
+                  <a href="<%=request.getContextPath()%>/administration/listerGroupes">
                   <span class="glyphicon glyphicon-log-out"></span>
                   LISTE GROUPES
                 </a>
               </li>
               <li>
-                <a href="RouterAdmin?route=CreationGroupe">
+                <a href="<%=request.getContextPath()%>/administration/AjouterGroupeFormServlet">
                   <span class="glyphicon glyphicon-log-out"></span>
                   CREATION GROUPES
                 </a>

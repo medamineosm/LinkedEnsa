@@ -1,4 +1,4 @@
-/*
+    /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
@@ -61,7 +61,7 @@ public class AjoutGroupeServlet extends HttpServlet {
                             if(!item.isFormField()){
                                 String name = new File(item.getName()).getName();
                                 
-                                chemin = "C://Users//Yunho//Desktop//"+File.separator + name;
+                                chemin = "D:\\"+File.separator + name;
                                 item.write( new File(chemin));
                         
                             }
@@ -117,7 +117,7 @@ public class AjoutGroupeServlet extends HttpServlet {
                         }
                         request.setAttribute("resultat", "Le groupe a été ajouté avec succès");
                         
-                        request.getRequestDispatcher("/administration/ajout_groupe.jsp");
+                        request.getRequestDispatcher("/administration/ajouter_groupe.jsp");
                     } catch (Exception ex) {
                         Logger.getLogger(AjoutGroupeServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }

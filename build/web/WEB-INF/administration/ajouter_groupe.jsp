@@ -57,7 +57,7 @@
                     <div class="col-lg-4">
                       <div class="media">
                         <div class="pull-left">
-                          <img class="media-object" src="images/flat/excel.png">
+                            <img class="media-object" src="<%=request.getContextPath()%>/images/flat/excel.png">
                         </div>
                         <div class="media-body">
                           Inserer le fichier Excel des etudiant du groupe 
@@ -86,10 +86,7 @@
 
 
                     
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-
+   
     <!-- Custom JavaScript for the Menu Toggle -->
     <script>
       $("#menu-toggle").click(function(e) {
@@ -102,5 +99,4 @@
       $('#excelFile').val($(this).val());
       });
     </script>
-</body>
-</html>
+ <%@include  file="FOOTERADMIN.jsp"%>
