@@ -1,0 +1,127 @@
+ul {
+	margin: 0px;
+	padding: 0px;
+}
+h2.main-title {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	padding: 10px;
+	background-color: #00be9c;
+	color: #ffffff;
+	padding-left: 20px;
+	font-weight: 100;
+}
+
+#sidebar-wrapper .image-holder {
+	padding: 20px 20px;
+}
+#sidebar-wrapper .image-holder img {
+	width: 100%;
+	height: 100%;
+}
+
+#sidebar-wrapper .admin-menu {
+	margin-top: 20px;
+}
+
+#sidebar-wrapper .admin-menu .sidebar-menu li a {
+	color: #ffffff;
+	padding-left: 30px;
+  	padding-top: 14px;
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+
+#sidebar-wrapper .admin-menu .sidebar-menu li:hover a {
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #00be9c;
+}
+#sidebar-wrapper .admin-menu .sidebar-menu li a.active {
+	color: #ffffff;
+	text-decoration: none;
+	background-color: #009a7e;
+}
+.sidebar-menu span {
+	margin-right: 10px;
+}
+#sidebar-wrapper .admin-menu .sidebar-menu li {
+  	width: 100%;
+  	height: 50px;
+  	display: block;
+  	background: #5d5f60;
+  	margin-bottom: 2px;
+  	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+
+.sidebar-menu li:last-child{
+    margin-bottom: 0px;
+}
+
+.sidebar-menu li a{
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    display: block;
+    color: #fff;
+}
+
+/**************** accueil-content style *******************/
+
+.accueil-content {
+	margin-bottom: 10px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.accueil-content .offre .sub-line {
+	width: 100%;
+	height: 5px;
+	background-color: #00be9c;
+}
+.accueil-content .offre .sub-title {
+
+}
+
+/***************** groupe-content style ******************/
+
+.groupe-content {
+	margin-top: 10px;
+}
+.groupe-content .sub-line {
+	width: 100%;
+	height: 5px;
+	background-color: #00be9c;
+}
+.groupe-content .sub-title h3 {
+	background-color: #00be9c;
+	margin: 0px;
+	padding-top: 5px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	padding-right: 20px;
+	color: #fff;
+}
+
+.groupe-content-form,
+.groupe-content-table {
+	margin-top: 30px;
+}
+
+.groupe-content-form .media {
+	margin-bottom: 5px;
+	color: #888888;
+}
+.groupe-content-form .media img {
+	width: 80px;
+	height: 80px;
+}
+table thead {
+	background-color: #00be9c;
+	color: #ffffff;
+}

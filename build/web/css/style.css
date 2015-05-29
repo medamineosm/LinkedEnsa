@@ -1,0 +1,303 @@
+@charset "utf-8";
+/* CSS Document */
+
+::-webkit-selection { color: white;  background: #333333; }
+::-ms-selection { color: white;  background: #333333; }
+::-o-selection { color: white;  background: #333333; }
+::-moz-selection { color: white;  background: #333333; }
+::selection      { color: white;  background: #333333; } 
+
+
+
+
+/*
+colors 
+grie dark : 3a3f41;
+grie soft : 5d5f60;
+dedfdf
+yellow dark : 009a7e;
+yellow soft : 00be9c;
+*/
+
+/********************* login page ***************************/
+
+.page form {
+	margin-top: 150px;
+}
+.page form .form-control {
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+/* right side */
+.page-right .form-control:focus {
+	border-color: #3a3f41;
+}
+.page-right .form-group input:focus:invalid {
+	border-color: #5d5f60;
+}
+.page-right .form-group input:focus:valid {
+	border-color: #3a3f41;
+}
+
+.page-right .btn-valide {
+	text-align: center;
+	width: 100%;
+	background-color: #3a3f41;
+	color: #ffffff;
+	border-radius: 0px;
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+
+.page-right .btn-valide:hover {
+	background-color: #5d5f60;
+	color: #ffffff;
+}
+.page-right .input-group-addon {
+  color: #ffffff;
+  background-color: #3a3f41;
+  border: 1px solid #3a3f41;
+}
+
+/* left side */
+.page-left .form-control:focus {
+	border-color: #00be9c;
+}
+.page-left .form-group input:focus:invalid {
+	border-color: #3a3f41;
+}
+.page-left .form-group input:focus:valid {
+	border-color: #00be9c;
+}
+
+.page-left .btn-valide {
+	text-align: center;
+	width: 100%;
+	background-color: #00be9c;
+	color: #ffffff;
+	border-radius: 0px;
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+
+.page-left .btn-valide:hover {
+	background-color: #009a7e;
+	color: #ffffff;
+}
+.page-left .input-group-addon {
+  color: #ffffff;
+  background-color: #00be9c;
+  border: 1px solid #00be9c;
+}
+
+/********** side-bar style ************/
+#wrapper {
+  	padding-left: 300px;
+  	transition: all 0.4s ease 0s;
+}
+
+#sidebar-wrapper {
+  	margin-left: -300px;
+  	left: 300px;
+  	width: 300px;
+  	background: #3a3f41;
+  	position: fixed;
+  	height: 100%;
+  	overflow-y: auto;
+  	z-index: 1000;
+  	-webkit-transition-duration: 1.0s;
+    -moz-transition-duration: 1.0s;
+    -o-transition-duration: 1.0s;
+    transition-duration: 1.0s;
+  	transition: all 1.0s ease 0s;
+}
+#page-content-wrapper {
+  	width: 100%;
+}
+.sidebar-nav {
+  	padding: 0px 0px;
+}
+.sidebar-menu {
+  	margin: 5px 0px;
+  	width: 100%;
+}
+
+
+.content-header {
+  	height: 65px;
+  	line-height: 65px;
+  	display: none;
+}
+
+.content-header h1 {
+  	margin: 0;
+  	margin-left: 20px;
+  	line-height: 65px;
+  	display: none;
+}
+.info {
+	text-align: center;
+	color: #ffffff;
+}
+.info .profile {
+	width: 100%;
+	height: auto;
+	padding: 20px;
+	padding-bottom: 5px;
+}
+.info .profile img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	border: 5px solid #5d5f60;
+}
+.info h3.name-header {
+	color: #dedfdf;
+}
+#menu-toggle {
+  	display: none;
+}
+
+.inset {
+	
+  	padding: 20px;
+}
+
+@media (max-width:767px) {
+
+	#wrapper {
+	  padding-left: 0;
+	}
+
+	#sidebar-wrapper {
+	  left: 0;
+	}
+
+	#wrapper.active {
+	  position: relative;
+	  left: 300px;
+	}
+
+	#wrapper.active #sidebar-wrapper {
+	  left: 300px;
+	  width: 300px;
+	  -webkit-transition-duration: 1.0s;
+	    -moz-transition-duration: 1.0s;
+	    -o-transition-duration: 1.0s;
+	    transition-duration: 1.0s;
+	  transition: all 1.0s ease 0s;
+	}
+	.content-header {
+	  display: inline-block;
+	}
+
+	.content-header h1 {
+	  display: inline-block;
+	}
+	#menu-toggle {
+	  display: inline-block;
+	}
+
+	.inset {
+	  padding: 15px;
+	}
+
+}
+
+
+/********************* admin login page ************************/
+
+
+body.login-body {
+	min-height: 600px;
+	background-image: url(../images/login-background.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
+}
+
+.login-content .logo-banner {
+	font-family: "AvenirLT-Roman","Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-top: 30px;
+	height: 50px;
+}
+.login-content .logo-banner img {
+	height: 100%;
+	width: auto;
+}
+
+.login-content .form-content {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.login-content .login {
+	width: 600px;
+	margin-top: 100px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	-ms-border-radius: 4px;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+	background: #fff;
+	padding: 20px 40px 60px 40px;
+	display: table;
+}
+.forget-pass-content .forget-pass {
+	padding: 20px 40px 56px 40px;
+}
+.login-content a {
+	color: #948b7d;
+}
+.login-content a:hover {
+	cursor: pointer;
+	color: #554e44;
+	text-decoration: none;
+}
+.form-group input:focus:invalid {
+	border-color: #e1dcd3;
+}
+.form-group input:focus:valid {
+	border-color: #00be9c;
+}
+.btn {
+	-webkit-transition: all 0.4s ease-out;
+	-moz-transition: all 0.4s ease-out;
+	-ms-transition: all 0.4s ease-out;
+	-o-transition: all 0.4s ease-out;
+}
+.btn-submit {
+	text-align: center;
+	width: 100%;
+	background-color: #00be9c;
+	color: #ffffff;
+	border-radius: 0px;
+}
+.btn-submit:hover,
+.btn-submit:focus {
+	background-color: #009a7e;
+	color: #ffffff;
+}
+.login-body h1,
+.login-body h2 {
+	color: #00be9c;
+}
+
+footer {
+	margin-top: 65px;
+	padding: 20px 0px;
+	color: #ffffff;
+}
