@@ -23,12 +23,14 @@ public class AjouterGroupeFormServlet extends HttpServlet {
  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {request.getRequestDispatcher("/WEB-INF/administration/ajouter_groupe.jsp").forward(request, response);
+            throws ServletException, IOException {
+        request.getRequestDispatcher("/WEB-INF/administration/ajouter_groupe.jsp").forward(request, response);
+        //response.getWriter().print("test");
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        //response.getWriter().print("test");
     }
 }

@@ -5,8 +5,6 @@
 package ma.ensa.linked.controller.administration;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -27,7 +25,7 @@ public class DetailsGroupeServlet extends HttpServlet {
             throws ServletException, IOException {
         Groupe grp = GroupeService.getGroupeById(Integer.parseInt(request.getParameter("id")));
         request.setAttribute("groupe", grp);
-        request.getRequestDispatcher("/administration/details_groupe.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/administration/liste_etudiant_groupe.jsp").forward(request, response);
     }
 
 }

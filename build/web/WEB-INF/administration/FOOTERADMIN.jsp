@@ -15,7 +15,6 @@
     
 </body>
  <!-- JavaScript -->
-<script src="<%=request.getContextPath()%>/js/jquery-1.10.2.js"></script>
-<script src="<%=request.getContextPath()%>/js/bootstrap.js"></script>
+<script src="<%=request.getContextPath()%>/dist/js/bootstrap.js"></script>
 <script src="<%=request.getContextPath()%>/js/modernizr.custom.js"></script>
 </html>

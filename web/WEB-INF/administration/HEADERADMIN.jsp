@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/dist/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/style.css" />
     <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/admin.css" />
+    <script src="<%=request.getContextPath()%>/dist/js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>

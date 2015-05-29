@@ -97,7 +97,7 @@ public final class login_005fadmin_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("    <footer>\r\n");
       out.write("        <div class=\"container\">\r\n");
       out.write("            <div class=\"col-lg-6\">\r\n");
-      out.write("                <p>Copyright Â© 2014 CV ENSAK, All Rights Reserved.</p>\r\n");
+      out.write("                <p>Copyright © 2014 CV ENSAK, All Rights Reserved.</p>\r\n");
       out.write("            </div>\r\n");
       out.write("        </div>\r\n");
       out.write("    </footer>\r\n");

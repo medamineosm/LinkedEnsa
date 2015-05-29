@@ -117,11 +117,12 @@ public class AjoutGroupeServlet extends HttpServlet {
                         }
                         request.setAttribute("resultat", "Le groupe a été ajouté avec succès");
                         
-                        request.getRequestDispatcher("/administration/ajouter_groupe.jsp");
+                        
                     } catch (Exception ex) {
                         Logger.getLogger(AjoutGroupeServlet.class.getName()).log(Level.SEVERE, null, ex);
                     }
-                    
+                    request.getRequestDispatcher("/WEB-INF/administration/ajouter_groupe.jsp").forward(request, response);
+                    //response.sendRedirect(request.getContextPath()+"/administration/ajouter_groupe.jsp");
                     
             
          }

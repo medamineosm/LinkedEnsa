@@ -1,4 +1,10 @@
-<%@include file="HEADERADMIN.jsp"%>          
+<%@page import="ma.ensa.linked.metier.Etudiant"%>
+<%@page import="ma.ensa.linked.service.GroupeService"%>
+<%@page import="ma.ensa.linked.metier.Groupe"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ma.ensa.linked.metier.Professeur"%>
+<%@include file="HEADERADMIN.jsp"%>
+<%Groupe g = (Groupe)request.getAttribute("groupe");%>
       <!-- Page content -->
       <div id="page-content-wrapper">
         <div class="content-header">
@@ -17,7 +23,7 @@
             <div class="groupe-content">
               <div class="sub-line"></div>
               <div class="sub-title">
-                <div class="col-lg-4 row"><h3 class="row">(nom du groupe)</h3></div>
+                <div class="col-lg-4 row"><h3 class="row"><%= g.getNom() %></h3></div>
               </div>
             </div>
           </div>
@@ -27,21 +33,31 @@
               <table class="table table-striped table-bordered">
                 <thead>
                   <tr>
-                    <td>#</td>
-                    <td>Nom</td>
-                    <td>Prénom</td>
-                    <td>Email</td>
-                    <td>Options</td>
+                    <th>CNE</th>
+                    <th>Nom</th>
+                    <th>Telephone</th>
+                    <th>Email</th>
+                    <th>Login</th>
+                    <th>Profil</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Sahi</td>
-                    <td>Mouad</td>
-                    <td>mouad.sahi@gmail.com</td>
-                    <td><a href="RouterAdmin?route=ProfileEtudiant&id_etudiant=1" class="btn btn-submit" href="#">Afficher</a></td>
-                  </tr>    
+                    </tr>
+                    <%
+                    for(Etudiant e : g.getListeEtudiants())
+                    {
+                    %>
+                    <tr>
+                        <td><%= e.getCne() %></td>
+                        <td><%= e.getNom() %></td>
+                        <td><%= e.getTelephone()==null?"-":e.getTelephone() %></td>
+                        <td><%= e.getEmail() %></td>
+                        <td><%= e.getLogin() %></td>
+                        <td><a href="RouterAdmin?route=ProfileEtudiant&id_etudiant=1" class="btn btn-submit" href="#">Afficher</a></td>
+                    </tr>
+                    <%
+                    }
+                    %>   
                 </tbody>
               </table>
 
@@ -56,10 +72,6 @@
 
 
                     
-    <!-- JavaScript -->
-    <script src="js/jquery-1.10.2.js"></script>
-    <script src="js/bootstrap.js"></script>
-
     <!-- Custom JavaScript for the Menu Toggle -->
     <script>
       $("#menu-toggle").click(function(e) {

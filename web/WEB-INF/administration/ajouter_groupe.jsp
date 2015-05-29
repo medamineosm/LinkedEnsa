@@ -24,30 +24,30 @@
 
           <div class="col-lg-12">
             <div class="groupe-content-form">
-                <form class="bs-example form-horizontal row" method="POST" action="">
+                <form class="bs-example form-horizontal row" method="POST" action="<%=request.getContextPath()%>/administration/ajoutGroupe" enctype="multipart/form-data" >
                   <fieldset>
                     <div class="col-lg-8">
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="nom_groupe" placeholder="Nom du Groupe" type="text">
+                          <input class="form-control" name="nom" placeholder="Nom du Groupe" type="text">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="username" placeholder="Filiere" type="text">
+                          <input class="form-control" name="filiere" placeholder="Filiere" type="text">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="username" placeholder="Niveau" type="text">
+                          <input class="form-control" name="niveau" placeholder="Niveau" type="text">
                         </div>
                       </div>
 
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="username" placeholder="Promotion" type="text">
+                          <input class="form-control" name="promotion" placeholder="Promotion" type="text">
                         </div>
                       </div>
 
@@ -66,7 +66,7 @@
                       <div class="form-group">
                         <div class="col-lg-12">
                             <input type="file" id="fileHolder" name="excelFile" style="display:none">
-                            <input id="excelFile" type="text" class="form-control">
+                            <input id="excelFile" type="text" class="form-control" disabled="disabled">
                         </div>
                       </div>
                       <botton class="btn btn-submit" onclick="$('input[id=fileHolder]').click();">Upload</botton>
@@ -82,21 +82,22 @@
       </div>
       
     </div>
-  
-
-
-                    
-   
-    <!-- Custom JavaScript for the Menu Toggle -->
-    <script>
+   <!-- Custom JavaScript for the Menu Toggle -->
+    <script type="text/javascript">
+    $(document).ready(function(){
+        
       $("#menu-toggle").click(function(e) {
           e.preventDefault();
           $("#wrapper").toggleClass("active");
       });
-    </script>
-    <script type="text/javascript">
-      $('input[id=fileHolder]').change(function() {
+    
+        
+      $('#fileHolder').change(function() {
       $('#excelFile').val($(this).val());
-      });
+      alert($("#excelFile").val());
+      });  
+    });
+      
     </script>
  <%@include  file="FOOTERADMIN.jsp"%>
+ 
