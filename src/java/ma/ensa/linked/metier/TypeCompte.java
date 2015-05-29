@@ -9,5 +9,18 @@ package ma.ensa.linked.metier;
  * @author Yunho
  */
 public enum TypeCompte {
-    PROFESSEUR,ETUDIANT,ADMINISTRATEUR,ENTREPRISE
+    PROFESSEUR("prof"),ETUDIANT("etudiant"),ADMINISTRATEUR("admin"),ENTREPRISE("entreprise");
+    
+    private String intitule;
+
+    TypeCompte(String intitule)
+    {
+        this.intitule=intitule;
+    }
+    
+    public String getIntitule() {
+        return intitule;
+    }
+    
+    
 }

@@ -57,4 +57,23 @@ public class UtilisateurService {
         }
     }
     
+    public static boolean insertUser(Utilisateur user)
+    {
+        try {
+            PreparedStatement st = Connexion.getcon().prepareStatement("insert into logins values(?,?,?,?,?,?,?)");
+            st.setString(1, user.getLogin());
+            st.setString(2, user.getPassword());
+            st.setString(3, user.getNom());
+            st.setString(4, user.getTelephone());
+            st.setString(5, user.getEmail());
+            st.setString(6, user.getAdresse());
+            st.setString(7, user.getType().getIntitule());
+            return st.executeUpdate()!=0;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+ 
+    
 }

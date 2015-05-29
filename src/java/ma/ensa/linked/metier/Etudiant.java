@@ -39,6 +39,11 @@ public class Etudiant extends Utilisateur{
     public void setCne(String cne) {
         this.cne = cne;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+" Etudiant{" + "cne=" + cne + ", date_naissance=" + date_naissance + ", groupe=" + groupe + '}';
+    }
     
     
     

@@ -19,6 +19,11 @@ public class Professeur extends Utilisateur {
     public void setGrade(String grade) {
         this.grade = grade;
     }
+
+    @Override
+    public String toString() {
+        return super.toString()+"Professeur{" + "grade=" + grade + '}';
+    }
     
     
     

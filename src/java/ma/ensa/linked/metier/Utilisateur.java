@@ -73,6 +73,11 @@ public abstract class Utilisateur {
     public void setType(TypeCompte type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Utilisateur{" + "login=" + login + ", password=" + password + ", nom=" + nom + ", telephone=" + telephone + ", email=" + email + ", adresse=" + adresse + ", type=" + type + '}';
+    }
     
     
 }

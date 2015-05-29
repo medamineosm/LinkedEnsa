@@ -25,12 +25,12 @@
             
                 <div class="col-lg-12">
                     <h2>LOGIN FOR PROF</h2>
-                    <form class="bs-example form-horizontal" method="POST" action="">
+                    <form class="bs-example form-horizontal" method="POST" action="AuthentificationServlet">
                       <fieldset>
 
                         <div class="form-group">
                           <div class="col-lg-12">
-                            <input class="form-control" name="username" placeholder="Username" type="text">
+                            <input class="form-control" name="login" placeholder="Username" type="text">
                           </div>
                         </div>
 

@@ -75,6 +75,11 @@ public class Groupe {
     public void setListeEtudiants(ArrayList<Etudiant> listeEtudiants) {
         this.listeEtudiants = listeEtudiants;
     }
+
+    @Override
+    public String toString() {
+        return "Groupe{" + "identifiant=" + identifiant + ", nom=" + nom + ", filiere=" + filiere + ", niveau=" + niveau + ", promotion=" + promotion + ", professeur=" + professeur + '}';
+    }
     
     
 }

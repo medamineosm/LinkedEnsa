@@ -10,22 +10,5 @@ package ma.ensa.linked.metier;
  * @author PC
  */
 public class Secteur_Activite {
-    private String intituler;
-
-    public Secteur_Activite() {
-    }
-
-    public Secteur_Activite(String intituler) {
-        this.intituler = intituler;
-    }
-
-    public String getIntituler() {
-        return intituler;
-    }
-
-    public void setIntituler(String intituler) {
-        this.intituler = intituler;
-    }
-    
     
 }
