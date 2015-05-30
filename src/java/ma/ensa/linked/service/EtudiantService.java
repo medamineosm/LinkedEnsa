@@ -52,11 +52,11 @@ public class EtudiantService {
             Connexion.getcon().setAutoCommit(true);
             return false;
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(EtudiantService.class.getName()).log(Level.SEVERE, null, ex);
             try {
                 Connexion.getcon().setAutoCommit(true);
             } catch (SQLException ex1) {
-                ex.printStackTrace();
+                Logger.getLogger(EtudiantService.class.getName()).log(Level.SEVERE, null, ex);
                 return false;
             }
             return false;
@@ -98,8 +98,44 @@ public class EtudiantService {
             }
             return liste;   
         } catch (SQLException ex) {
-            ex.printStackTrace();
+            Logger.getLogger(EtudiantService.class.getName()).log(Level.SEVERE, null, ex);
             return null;
         }
     }
+    
+    public static Etudiant getEtudiantById(String login)
+    {
+        try {
+            PreparedStatement st = Connexion.getcon().prepareStatement("select * from logins l,etudiants e where l.login=e.login and e.login=?");
+            st.setString(1, login);
+            ResultSet rs = st.executeQuery();
+            Etudiant e;
+            if(rs.next())
+            {
+                e = new Etudiant();
+                e.setLogin(rs.getString("login"));
+                e.setNom(rs.getString("nom"));
+                e.setTelephone(rs.getString("telephone"));
+                e.setEmail(rs.getString("email"));
+                e.setAdresse(rs.getString("adresse"));
+                e.setType(TypeCompte.ETUDIANT);
+                e.setCne(rs.getString("cne"));
+                e.setDate_naissance(rs.getDate("date_naissance"));
+                e.setGroupe(GroupeService.getGroupeById(rs.getInt("id_groupe")));
+                e.setFormations(FormationService.getFormationsByEtudiant(e));
+                e.setExperiences(ExperienceService.getExperiencesByEtudiant(e));
+                e.setProjets(ProjetService.getProjetsByEtudiant(e));
+                e.setLangues(LangueService.getLanguesByEtudiant(e));
+                e.setCompetences(CompetenceService.getcompetencesByEtudiant(e));
+                return e;
+            }
+            else
+                return null;
+        } catch (SQLException ex) {
+            Logger.getLogger(EtudiantService.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    
 }

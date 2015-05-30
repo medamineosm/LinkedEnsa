@@ -73,7 +73,7 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
                 <h2>Se Connecter</h2>
-                <form class="form-horizontal" action="/AuthentificationServlet" method="post">
+                <form class="form-horizontal">
                   <fieldset>
                     <div class="form-group">
                       <div class="input-group">

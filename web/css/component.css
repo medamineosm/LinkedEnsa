@@ -135,7 +135,7 @@ body {
 	line-height: 44px;
 	opacity: 0;
 	pointer-events: none;
-	color: #ad9400;
+	color: #00be9c;
 	-webkit-transition: all 0.4s ease-out;
 	-moz-transition: all 0.4s ease-out;
 	-ms-transition: all 0.4s ease-out;
@@ -150,17 +150,17 @@ body {
 	left: 12.5%;
 	-webkit-transform: translateX(-50%);
 	transform: translateX(-50%);
-	color: #ad9400;
+	color: #00be9c;
 }
 
 .back-right {
 	right: 12.5%;
 	-webkit-transform: translateX(50%);
 	transform: translateX(50%);
-	color: #ad9400;
+	color: #00be9c;
 }
 .back:hover {
-	color: #d6be33;
+	color: #009a7e;
 	text-decoration: none;
 }
 .open-right .back-left,
@@ -178,7 +178,7 @@ body {
 	position: relative;
 	top: 0;
 	overflow: auto;
-	min-height: 1000px;
+	min-height: 680px;
 	width: 75%;
 	height: auto;
 	font-size: 1.4em;
@@ -192,6 +192,14 @@ body {
 	color: #3a3f41;
 	-webkit-transform: translateX(100%);
 	transform: translateX(100%);
+	background-image: url(../images/etudiants.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 .splitlayout.open-right {
@@ -206,6 +214,14 @@ body {
 	text-align: right;
 	-webkit-transform: translateX(-100%);
 	transform: translateX(-100%);
+	background-image: url(../images/entreprises.jpg);
+	background-position: center center;
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 .splitlayout.open-left {
@@ -227,7 +243,9 @@ body {
 	font-size: 2.4em;
 	text-align: center;
 }
-
+.page-right .page-inner h2 {
+	color: #00be9c;
+}
 .page-inner p {
 	font-weight: 300;
 	font-size: 1.2em;

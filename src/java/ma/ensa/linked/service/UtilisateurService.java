@@ -7,9 +7,11 @@ package ma.ensa.linked.service;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ma.ensa.linked.metier.Connexion;
+import ma.ensa.linked.metier.Etudiant;
 import ma.ensa.linked.metier.Professeur;
 import ma.ensa.linked.metier.TypeCompte;
 import ma.ensa.linked.metier.Utilisateur;
@@ -31,22 +33,11 @@ public class UtilisateurService {
             {
                 if(rs.getString("type_compte").equals("prof"))
                 {
-                        Professeur prof = new Professeur();
-                        prof.setLogin(rs.getString("login"));
-                        prof.setNom(rs.getString("nom"));
-                        prof.setTelephone(rs.getString("telephone"));
-                        prof.setEmail(rs.getString("email"));
-                        prof.setAdresse(rs.getString("adresse"));
-                        prof.setType(TypeCompte.PROFESSEUR);
-                        PreparedStatement st2 = Connexion.getcon().prepareStatement("select * from professeurs where login=?");
-                        st2.setString(1,prof.getLogin());
-                        ResultSet rs2 = st2.executeQuery();
-                        if(rs2.next())
-                        {
-                           prof.setGrade(rs2.getString("grade"));
-                           return prof;
-                        }
-  
+                    return ProfesseurService.getProfesseurById(login);
+                }
+                else if(rs.getString("type_compte").equals("etudiant"))
+                {
+                    return EtudiantService.getEtudiantById(login);  
                 }
             }
 

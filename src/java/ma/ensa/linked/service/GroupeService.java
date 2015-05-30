@@ -26,9 +26,9 @@ public class GroupeService {
         try {
             PreparedStatement st = Connexion.getcon().prepareStatement("insert into groupes values(null,?,?,?,?,?)");
             st.setString(1,grp.getNom());
-            st.setString(2,grp.getFiliere());
-            st.setString(3,grp.getNiveau());
-            st.setString(4,grp.getPromotion());
+            st.setString(2, grp.getFiliere());
+            st.setString(3, grp.getNiveau());
+            st.setString(4, grp.getPromotion());
             st.setString(5,grp.getProfesseur().getLogin());
             if(st.executeUpdate()!=0)
             {
@@ -40,10 +40,9 @@ public class GroupeService {
             else
                 return -1;
         } catch (SQLException ex) {
-            Logger.getLogger(GroupeService.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
             return -1;
         }
-        
     }
     
     public static ArrayList<Groupe> getGroupesByProf(Professeur prof)
