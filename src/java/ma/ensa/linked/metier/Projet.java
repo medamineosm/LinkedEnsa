@@ -11,24 +11,21 @@ import java.util.Date;
  *
  * @author PC
  */
-public class Projets {
+public class Projet {
+    
+    private int identifiant;
     private String nom;
     private Date date;
     private String description;
     private String fonction;
     private String lieu;
-    private Etudiant etudiant;
 
-    public Projets() {
+    public int getIdentifiant() {
+        return identifiant;
     }
 
-    public Projets(String nom, Date date, String description, String fonction, String lieu, Etudiant etudiant) {
-        this.nom = nom;
-        this.date = date;
-        this.description = description;
-        this.fonction = fonction;
-        this.lieu = lieu;
-        this.etudiant = etudiant;
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
     public String getNom() {
@@ -71,13 +68,13 @@ public class Projets {
         this.lieu = lieu;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    @Override
+    public String toString() {
+        return "Projet{" + "identifiant=" + identifiant + ", nom=" + nom + ", date=" + date + ", description=" + description + ", fonction=" + fonction + ", lieu=" + lieu + '}';
     }
-
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
+    
+    
+  
     
     
 }

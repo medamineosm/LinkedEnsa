@@ -10,17 +10,18 @@ package ma.ensa.linked.metier;
  * @author PC
  */
 public class Competence {
-    private String nom;
-    private Etudiant etudiant;
-
-    public Competence() {
-    }
-
-    public Competence(String nom, Etudiant etudiant) {
-        this.nom = nom;
-        this.etudiant = etudiant;
-    }
     
+    private int identifiant;
+    private String nom;
+
+    public int getIdentifiant() {
+        return identifiant;
+    }
+
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
+    }
+
     public String getNom() {
         return nom;
     }
@@ -29,13 +30,10 @@ public class Competence {
         this.nom = nom;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    @Override
+    public String toString() {
+        return "Competence{" + "identifiant=" + identifiant + ", nom=" + nom + '}';
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-    
     
 }

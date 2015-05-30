@@ -10,19 +10,18 @@ package ma.ensa.linked.metier;
  * @author PC
  */
 public class Ecole {
+    private int identifiant;
     private String nom;
     private String adresse;
     private String telephone;
-    private String photo;
+    private String image;
 
-    public Ecole() {
+    public int getIdentifiant() {
+        return identifiant;
     }
 
-    public Ecole(String nom, String adresse, String telephone, String photo) {
-        this.nom = nom;
-        this.adresse = adresse;
-        this.telephone = telephone;
-        this.photo = photo;
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
     public String getNom() {
@@ -49,13 +48,19 @@ public class Ecole {
         this.telephone = telephone;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getImage() {
+        return image;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setImage(String image) {
+        this.image = image;
     }
+
+    @Override
+    public String toString() {
+        return "Ecole{" + "identifiant=" + identifiant + ", nom=" + nom + ", adresse=" + adresse + ", telephone=" + telephone + ", image=" + image + '}';
+    }
+
     
     
 }

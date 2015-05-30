@@ -12,33 +12,30 @@ import java.util.Date;
  * @author PC
  */
 public class Experience {
-    private Entreprise entrprise;
+    
+    private int identifiant;
+    private String nom_entrprise;
     private String titre;
     private Date date_debut;
     private Date date_fin;
     private String description;
+    private CatalogueEntreprise entreprise;
     private boolean en_cours;
-    private Etudiant etudiant;
 
-    public Experience() {
+    public int getIdentifiant() {
+        return identifiant;
     }
 
-    public Experience(Entreprise entrprise, String titre, Date date_debut, Date date_fin, String description, boolean en_cours, Etudiant etudiant) {
-        this.entrprise = entrprise;
-        this.titre = titre;
-        this.date_debut = date_debut;
-        this.date_fin = date_fin;
-        this.description = description;
-        this.en_cours = en_cours;
-        this.etudiant = etudiant;
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
-    public Entreprise getEntrprise() {
-        return entrprise;
+    public String getNom_entrprise() {
+        return nom_entrprise;
     }
 
-    public void setEntrprise(Entreprise entrprise) {
-        this.entrprise = entrprise;
+    public void setNom_entrprise(String nom_entrprise) {
+        this.nom_entrprise = nom_entrprise;
     }
 
     public String getTitre() {
@@ -73,6 +70,16 @@ public class Experience {
         this.description = description;
     }
 
+    public CatalogueEntreprise getEntreprise() {
+        return entreprise;
+    }
+
+    public void setEntreprise(CatalogueEntreprise entreprise) {
+        this.entreprise = entreprise;
+    }
+
+    
+
     public boolean isEn_cours() {
         return en_cours;
     }
@@ -81,14 +88,11 @@ public class Experience {
         this.en_cours = en_cours;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    @Override
+    public String toString() {
+        return "Experience{" + "identifiant=" + identifiant + ", nom_entrprise=" + nom_entrprise + ", titre=" + titre + ", date_debut=" + date_debut + ", date_fin=" + date_fin + ", description=" + description + ", entreprise=" + entreprise + ", en_cours=" + en_cours + '}';
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
-    }
-    
     
     
 }

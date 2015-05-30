@@ -1,11 +1,22 @@
+<%@page import="ma.ensa.linked.metier.Langue"%>
+<%@page import="ma.ensa.linked.metier.Competence"%>
+<%@page import="ma.ensa.linked.metier.Projet"%>
+<%@page import="ma.ensa.linked.metier.Experience"%>
+<%@page import="ma.ensa.linked.metier.Formation"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="ma.ensa.linked.metier.Etudiant"%>
+<%
+  Etudiant etudiant =(Etudiant)request.getAttribute("etudiant");
+  SimpleDateFormat format_date = new SimpleDateFormat("dd/MM/yyyy");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ENSAK CV</title>
-    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Profil</title>
+    <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 
 <body>
@@ -17,10 +28,10 @@
           <div class="info">
             <div class="media">
               <div class="pull-left">
-                <img class="media-object" src="images/1.jpg">
+                <img class="media-object" src="../images/1.jpg">
               </div>
               <div class="media-body">
-                <h3>Mouad SAHI</h3>
+                <h3><%= etudiant.getNom() %></h3>
               </div>
             </div>
           </div>
@@ -34,7 +45,7 @@
                 </a>
               </li>
               <li>
-                <a href="#">
+                  <a href="<%=request.getContextPath()%>/etudiant/EditProfilEtudiant">
                   <span class="glyphicon glyphicon-cog"></span>
                   EDIT PROFILE
                 </a>
@@ -48,7 +59,7 @@
               <li>
                 <a href="#">
                   <span class="glyphicon glyphicon-log-out"></span>
-                  DÉCONNEXION
+                  DECONNEXION
                 </a>
               </li>
             </ul>
@@ -77,15 +88,17 @@
               
               <div class="info-general">
                 <div class="col-lg-12">
-                  <div class="col-lg-7">
-                    <h2>SAHI Mouad</h2>
-                    <p>Elève Ingénieur en Génie informatique ENSA Khouribga</p>
+                  <div class="col-lg-6">
+                    <h2><%= etudiant.getNom() %></h2>
+                    <p>El�ve Ing�ieur en G�nie informatique ENSA Khouribga</p>
+                    <p>Groupe : <%= etudiant.getGroupe().getNom() %></p>
+                    <p>Proprietaire : <%= etudiant.getGroupe().getProfesseur().getNom() %></p>
                   </div>
-                  <div class="col-lg-5 contact">
-                    <p class="contact-component"><span class="glyphicon glyphicon-envelope"></span>mouad.sahi@gmail.com</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-map-marker"></span>Centre Agdz,Agdz</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-phone"></span>(+212)677788686</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-tag"></span>22 ans, Célibataire</p>
+                  <div class="col-lg-6 contact">
+                    <p class="contact-component"><span class="glyphicon glyphicon-envelope"></span><%= etudiant.getEmail() %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-map-marker"></span><%= etudiant.getAdresse()!=null?etudiant.getAdresse():"-" %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-phone"></span><%= etudiant.getTelephone()!=null?etudiant.getTelephone():"-" %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-tag"></span><%= (etudiant.getDate_naissance()!=null)?format_date.format(etudiant.getDate_naissance()):"-" %></p>
                   </div>
                 </div>
               </div>
@@ -97,11 +110,11 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/formation.png">
+                        <img class="media-object" src="../images/icons/formation.png">
                       </div>
                       <div class="media-body">
                         <h3>FORMATIONS</h3>
-                        <p>Liste des Formations Académiques</p>
+                        <p>Liste des Formations Acad�miques</p>
                       </div>
                     </div>
                   </div>
@@ -109,36 +122,25 @@
               </div>
 
               <div class="formation-content">
-
+                <%
+                for(Formation form : etudiant.getFormations())
+                {
+                %>            
                 <!-- pour chaque formation -->
                 <div class="col-lg-12 formation">
                   <div class="col-lg-2">
-                    <div class="date-formation row"><h4>2014 - 2015</h4></div>
+                    <div class="date-formation row"><h4><%= form.getAnnee_debut()+" - "+form.getAnnee_fin() %></h4></div>
                   </div>
                   <div class="col-lg-10">
-                    <div class="formation-desc"><p>ENSA Khouribga Cycle d’ingénieur GI.</p></div>
+                    <div class="formation-desc">
+                    <p><b><i><%=((form.getEcole()!=null)?form.getEcole().getNom():form.getNom_ecole()) %></i></b>, <i><%= form.getDiplome() %></i></p>
+                    <p><%= form.getDescription() %></p>
+                    </div>
                   </div>
                 </div>
-                <!-- pour chaque formation -->
-                <div class="col-lg-12 formation">
-                  <div class="col-lg-2">
-                    <div class="date-formation row"><h4>2010 - 2014</h4></div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="formation-desc"><p>ENSA Khouribga Cycle préparatoire intégré, cycle d’ingénieur Tronc Commun.</p></div>
-                  </div>
-                </div>
-                <!-- pour chaque formation -->
-                <div class="col-lg-12 formation">
-                  <div class="col-lg-2">
-                    <div class="date-formation row"><h4>2009 - 2010</h4></div>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="formation-desc"><p>Baccalauréat au Lycée SIDI AHMED BENASSER à Zagoura. 
-                    Série : Sciences Mathématique A.</p></div>
-                  </div>
-                </div>
-                
+                <%
+                }
+                %>
               </div>
               <!-- FIN Section des formation  -->
               <!-- Section des Expériences  -->
@@ -148,11 +150,11 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/experience.png">
+                        <img class="media-object" src="../images/icons/experience.png">
                       </div>
                       <div class="media-body">
-                        <h3>EXPÉRIENCES</h3>
-                        <p>Liste des Expériences et Stages</p>
+                        <h3>EXPERIENCES</h3>
+                        <p>Liste des Exp�riences et Stages</p>
                       </div>
                     </div>
                   </div>
@@ -160,38 +162,28 @@
               </div>
 
               <div class="experience-content">
+                <%
+                for(Experience exp : etudiant.getExperiences())
+                {
+                %>
                 <!-- pour chaque experience -->
                 <div class="col-lg-12 experience">
                   <div class="col-lg-2 date-experience">
-                    <h4>10/07/2015</h4>
+                    <h4><%= format_date.format(exp.getDate_debut())%></h4>
                     <div class="short-line"></div>
-                    <h4>10/09/2015</h4>
+                    <h4><%=format_date.format(exp.getDate_fin()) %></h4>
                   </div>
                   <div class="col-lg-10">
                     <div class="bs-callout-experience">
-                      <h4>Stage d’observation</h4>
-                      <p>Entreprise : Agence du Bassin Hydraulique du Tensift (ABHT)</p>
-                      <p>Stage au sein de L’agence du Bassin Hydraulique du Tensift (ABHT) Marrakech.
-                      </p>
+                      <h4><%= exp.getTitre()%></h4>
+                      <p><b>Entreprise</b> : <%=((exp.getEntreprise()!=null)?exp.getEntreprise().getNom():exp.getNom_entrprise()) %></p>
+                      <p><%= exp.getDescription() %></p>
                     </div>
                   </div>
                 </div>
-                <!-- pour chaque experience -->
-                <div class="col-lg-12 experience">
-                  <div class="col-lg-2 date-experience">
-                    <h4>10/07/2015</h4>
-                    <div class="short-line"></div>
-                    <h4>10/09/2015</h4>
-                  </div>
-                  <div class="col-lg-10">
-                    <div class="bs-callout-experience">
-                      <h4>Stage d’observation</h4>
-                      <p>Entreprise : Agence du Bassin Hydraulique du Tensift (ABHT)</p>
-                      <p>Stage au sein de L’agence du Bassin Hydraulique du Tensift (ABHT) Marrakech.
-                      </p>
-                    </div>
-                  </div>
-                </div>
+                <%
+                }
+                %>
               </div>
               <!-- FIN Section des Expériences  -->
 
@@ -202,7 +194,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/projet.png">
+                        <img class="media-object" src="../images/icons/projet.png">
                       </div>
                       <div class="media-body">
                         <h3>PROJETS</h3>
@@ -214,36 +206,27 @@
               </div>
 
               <div class="projet-content">
-
+                <%
+                for(Projet projet : etudiant.getProjets())
+                {
+                %>
                 <!-- pour chaque experience -->
                 <div class="col-lg-12 projet">
                   <div class="projet-iner col-lg-12">
                     <div class="col-lg-8">
-                      <h4>Titre projet</h4>
-                      <p>Description</p>
-                      <p>poste</p>
+                      <h4><%= projet.getNom()%></h4>
+                      <p><%= projet.getDescription() %></p>
+                      <p><%=projet.getFonction() %></p>
                     </div>
                     <div class="col-lg-4 right-side-content">
-                      <p><span class="glyphicon glyphicon-map-marker"></span>Lieu : </p>
-                      <p><span class="glyphicon glyphicon-calendar"></span>Date : </p>
+                      <p><span class="glyphicon glyphicon-map-marker"></span><b>Lieu</b> : <%= projet.getLieu() %></p>
+                      <p><span class="glyphicon glyphicon-calendar"></span><b>Date</b> : <%= format_date.format(projet.getDate()) %></p>
                     </div>
                   </div>
                 </div>
-                <!-- pour chaque experience -->
-                <div class="col-lg-12 projet">
-                  <div class="projet-iner col-lg-12">
-                    <div class="col-lg-8">
-                      <h4>Titre projet</h4>
-                      <p>Description</p>
-                      <p>poste</p>
-                    </div>
-                    <div class="col-lg-4 right-side-content">
-                      <p><span class="glyphicon glyphicon-map-marker"></span>Lieu : </p>
-                      <p><span class="glyphicon glyphicon-calendar"></span>Date : </p>
-                    </div>
-                  </div>
-                </div>
-
+                <%
+                }
+                %>
               </div>
               <!-- FIN Section des Projet  -->
 
@@ -254,11 +237,11 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/competence.png">
+                        <img class="media-object" src="../images/icons/competence.png">
                       </div>
                       <div class="media-body">
-                        <h3>COMPÉTENCES</h3>
-                        <p>Compétences Techniques</p>
+                        <h3>COMPETENCES</h3>
+                        <p>Competences Techniques</p>
                       </div>
                     </div>
                   </div>
@@ -268,12 +251,15 @@
               <div class="competence-content">
                 <div class="col-lg-12">
                   <ul>
-                    <li><span class="label-competence">New</span></li>
-                    <li><span class="label-competence">Java</span></li>
-                    <li><span class="label-competence">C++</span></li>
-                    <li><span class="label-competence">Netbeans</span></li>
-                    <li><span class="label-competence">Meta</span></li>
-                  </ul>
+                  <%
+                    for(Competence comp : etudiant.getCompetences())
+                    {
+                  %>
+                    <li><span class="label-competence"><%= comp.getNom() %></span></li>
+                  <%
+                    }
+                  %>
+                    </ul>
                 </div>
               </div>
               <!-- FIN Section des Compétences  -->
@@ -286,7 +272,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/language.png">
+                        <img class="media-object" src="../images/icons/language.png">
                       </div>
                       <div class="media-body">
                         <h3>LANGUES</h3>
@@ -300,21 +286,18 @@
               <div class="langue-content">
                 <div class="col-lg-12">
                   <ul>
+                   <%
+                      for(Langue langue : etudiant.getLangues())
+                      {
+                      %>
                     <li>
                       <div class="langue">
-                        <span class="label-langue">Arabe</span><span class="niveau-langue" >Langue maternelle.</span>
+                        <span class="label-langue"><%= langue.getIntitule()%></span><span class="niveau-langue" ><%=langue.getNiveau()  %></span>
                       </div>
                     </li>
-                    <li>
-                      <div class="langue">
-                        <span class="label-langue">Français</span><span class="niveau-langue" >Langue courante.</span>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="langue">
-                        <span class="label-langue">Anglais</span><span class="niveau-langue" >Bon niveau.</span>
-                      </div>
-                    </li>
+                    <%
+                    }
+                    %>
                   </ul>
                 </div>
               </div>
@@ -330,8 +313,8 @@
   
     <!-- JavaScript -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="../dist/js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../dist/js/bootstrap.js"></script>
 
     <!-- Custom JavaScript for the Menu Toggle -->
     <script>

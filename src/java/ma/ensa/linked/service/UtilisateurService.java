@@ -7,13 +7,7 @@ package ma.ensa.linked.service;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import ma.ensa.linked.metier.Connexion;
-import ma.ensa.linked.metier.Etudiant;
-import ma.ensa.linked.metier.Professeur;
-import ma.ensa.linked.metier.TypeCompte;
 import ma.ensa.linked.metier.Utilisateur;
 
 /**

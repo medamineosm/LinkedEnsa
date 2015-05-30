@@ -10,15 +10,20 @@ package ma.ensa.linked.metier;
  * @author PC
  */
 public class Langue {
+    
+    private int identifiant;
+    private String intitule;
     private String niveau;
-    private Etudiant etudiant;
 
     public Langue() {
     }
 
-    public Langue(String niveau, Etudiant etudiant) {
-        this.niveau = niveau;
-        this.etudiant = etudiant;
+    public int getIdentifiant() {
+        return identifiant;
+    }
+
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
     public String getNiveau() {
@@ -29,13 +34,21 @@ public class Langue {
         this.niveau = niveau;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    public String getIntitule() {
+        return intitule;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setIntitule(String intitule) {
+        this.intitule = intitule;
     }
+
+    @Override
+    public String toString() {
+        return "Langue{" + "identifiant=" + identifiant + ", intitule=" + intitule + ", niveau=" + niveau + '}';
+    }
+
+    
+
     
     
 }

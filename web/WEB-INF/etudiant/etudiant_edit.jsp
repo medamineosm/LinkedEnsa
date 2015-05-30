@@ -1,11 +1,22 @@
+<%@page import="ma.ensa.linked.metier.Langue"%>
+<%@page import="ma.ensa.linked.metier.Competence"%>
+<%@page import="ma.ensa.linked.metier.Projet"%>
+<%@page import="ma.ensa.linked.metier.Experience"%>
+<%@page import="ma.ensa.linked.metier.Formation"%>
+<%@page import="java.text.SimpleDateFormat"%>
+<%@page import="ma.ensa.linked.metier.Etudiant"%>
+<%
+  Etudiant etudiant =(Etudiant)request.getAttribute("etudiant");
+  SimpleDateFormat format_date = new SimpleDateFormat("dd/MM/yyyy");
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>ENSAK CV</title>
-    <link rel="stylesheet" type="text/css" href="dist/css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <title>Profil</title>
+    <link rel="stylesheet" type="text/css" href="../dist/css/bootstrap.css" />
+    <link rel="stylesheet" type="text/css" href="../css/style.css" />
 </head>
 
 <body>
@@ -17,10 +28,10 @@
           <div class="info">
             <div class="media">
               <div class="pull-left">
-                <img class="media-object" src="images/1.jpg">
+                <img class="media-object" src="../images/1.jpg">
               </div>
               <div class="media-body">
-                <h3>Mouad SAHI</h3>
+                <h3><%= etudiant.getNom() %></h3>
               </div>
             </div>
           </div>
@@ -28,13 +39,13 @@
           <div class="main-menu">
             <ul class="sidebar-menu">
               <li>
-                <a href="#">
+                <a href="#" class="active">
                   <span class="glyphicon glyphicon-tasks"></span>
                   PROFILE
                 </a>
               </li>
               <li>
-                <a href="#" class="active">
+                  <a href="<%=request.getContextPath()%>/etudiant/EditProfilEtudiant">
                   <span class="glyphicon glyphicon-cog"></span>
                   EDIT PROFILE
                 </a>
@@ -48,7 +59,7 @@
               <li>
                 <a href="#">
                   <span class="glyphicon glyphicon-log-out"></span>
-                  DÉCONNEXION
+                  DECONNEXION
                 </a>
               </li>
             </ul>
@@ -68,7 +79,7 @@
         <div class="page-content inset">
           <div class="col-lg-12">
             <div class="main-header">
-              <h2>EDIT PROFILE</h2>
+              <h2>PROFILE</h2>
             </div>
           </div>
 
@@ -77,18 +88,21 @@
               
               <div class="info-general">
                 <div class="col-lg-12">
-                  <div class="col-lg-7">
-                    <h2>SAHI Mouad</h2>
-                    <p>Elève Ingénieur en Génie informatique ENSA Khouribga</p>
+                  <div class="col-lg-6">
+                    <h2><%= etudiant.getNom() %></h2>
+                    <p>Eléve Ingéieur en Génie informatique ENSA Khouribga</p>
+                    <p>Groupe : <%= etudiant.getGroupe().getNom() %></p>
+                    <p>Proprietaire : <%= etudiant.getGroupe().getProfesseur().getNom() %></p>
                   </div>
-                  <div class="col-lg-5 contact">
-                    <p class="contact-component"><span class="glyphicon glyphicon-envelope"></span>mouad.sahi@gmail.com</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-map-marker"></span>Centre Agdz,Agdz</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-phone"></span>(+212)677788686</p>
-                    <p class="contact-component"><span class="glyphicon glyphicon-tag"></span>22 ans, Célibataire</p>
+                  <div class="col-lg-6 contact">
+                    <p class="contact-component"><span class="glyphicon glyphicon-envelope"></span><%= etudiant.getEmail() %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-map-marker"></span><%= etudiant.getAdresse()!=null?etudiant.getAdresse():"-" %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-phone"></span><%= etudiant.getTelephone()!=null?etudiant.getTelephone():"-" %></p>
+                    <p class="contact-component"><span class="glyphicon glyphicon-tag"></span><%= (etudiant.getDate_naissance()!=null)?format_date.format(etudiant.getDate_naissance()):"-" %></p>
                   </div>
                 </div>
               </div>
+
 
               <!-- Section des formation  -->
               <div class="section-title formation-title">
@@ -97,7 +111,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/formation.png">
+                        <img class="media-object" src="../images/icons/formation.png">
                       </div>
                       <div class="media-body">
                         <h3>FORMATIONS</h3>
@@ -109,7 +123,10 @@
               </div>
 
               <div class="formation-content">
-
+                <%
+                for(Formation form : etudiant.getFormations())
+                {
+                %>
                 <!-- pour chaque formation -->
                 <div class="col-lg-12 formation">
                   <div class="col-lg-2">
@@ -120,10 +137,13 @@
                   </div>
                   <!-- button update -->
                   <div class="col-lg-12 update-btn">
-                    <a data-toggle="modal" data-target="#add_formation" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a data-toggle="modal" id="edit_form_<%= form.getIdentifiant() %>" data-target="#add_formation" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
-
+                </li>
+                <%
+                }
+                %>
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
@@ -134,16 +154,16 @@
               <!-- FIN Section des formation  -->
 
               <!-- Section des Expériences  -->
-              <div class="section-title  experience-title">
+                            <div class="section-title  experience-title">
                 <div class="col-lg-12">
                   <div class="sub-line"></div>
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/experience.png">
+                        <img class="media-object" src="../images/icons/experience.png">
                       </div>
                       <div class="media-body">
-                        <h3>EXPÉRIENCES</h3>
+                        <h3>EXPERIENCES</h3>
                         <p>Liste des Expériences et Stages</p>
                       </div>
                     </div>
@@ -152,21 +172,29 @@
               </div>
 
               <div class="experience-content">
+                <%
+                for(Experience exp : etudiant.getExperiences())
+                {
+                %>
                 <!-- pour chaque experience -->
                 <div class="col-lg-12 experience">
                   <div class="col-lg-2 date-experience">
-                    <h4>10/07/2015</h4>
+                    <h4><%= format_date.format(exp.getDate_debut())%></h4>
                     <div class="short-line"></div>
-                    <h4>10/09/2015</h4>
+                    <h4><%=format_date.format(exp.getDate_fin()) %></h4>
                   </div>
                   <div class="col-lg-10">
                     <div class="bs-callout-experience">
-                      <h4>Stage d’observation</h4>
-                      <p>Entreprise : Agence du Bassin Hydraulique du Tensift (ABHT)</p>
-                      <p>Stage au sein de L’agence du Bassin Hydraulique du Tensift (ABHT) Marrakech.
-                      </p>
+                      <h4><%= exp.getTitre()%></h4>
+                      <p><b>Entreprise</b> : <%=((exp.getEntreprise()!=null)?exp.getEntreprise().getNom():exp.getNom_entrprise()) %></p>
+                      <p><%= exp.getDescription() %></p>
                     </div>
                   </div>
+                </div>
+                <%
+                }
+                %>
+              </div>
                   <!-- button update -->
                   <div class="col-lg-12 update-btn">
                     <a data-toggle="modal" data-target="#add_experience" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
@@ -189,7 +217,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/projet.png">
+                        <img class="media-object" src="../images/icons/projet.png">
                       </div>
                       <div class="media-body">
                         <h3>PROJETS</h3>
@@ -254,7 +282,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/competence.png">
+                        <img class="media-object" src="../images/icons/competence.png">
                       </div>
                       <div class="media-body">
                         <h3>COMPÉTENCES</h3>
@@ -311,7 +339,7 @@
                   <div class="sub-title">
                     <div class="media">
                       <div class="pull-left">
-                        <img class="media-object" src="images/icons/language.png">
+                        <img class="media-object" src="../images/icons/language.png">
                       </div>
                       <div class="media-body">
                         <h3>LANGUES</h3>
@@ -373,51 +401,53 @@
 
     <!-- Modal add or update formation -->
     <div class="modal fade modal-formation" id="add_formation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
+      <div class="modal-dialog" >
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Gestion Formation</h4>
           </div>
-          <div class="modal-body">
-
-              <form class="bs-example form-horizontal" method="POST" action="">
+          <div class="modal-body" >
+          <div id="edit_form_div">
+            <form class="bs-example form-horizontal" method="POST" action="">
                 <fieldset>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="ecole" placeholder="Ecole" type="text">
+                          <input class="form-control" id="edit_form_ecole" name="ecole" placeholder="Ecole" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="diplome" placeholder="Diplome" type="text">
+                          <input class="form-control" id="edit_form_diplome"name="diplome" placeholder="Diplome" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <textarea class="form-control" name="description_formation" placeholder="Description"></textarea>
+                          <textarea class="form-control" name="desc" id="edit_form_desc" placeholder="Description"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <select  class="form-control" name="date_debut">
+                          <select  class="form-control" name="debut" id="edit_form_annee_debut">
                             <option selected="selected">Date Début</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option>
                           </select>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <select  class="form-control" name="date_fin">
+                          <select  class="form-control" name="fin" id="edit_form_annee_fin">
                             <option selected="selected">Date Fin</option><option value="2015">2015</option><option value="2014">2014</option><option value="2013">2013</option><option value="2012">2012</option><option value="2011">2011</option><option value="2010">2010</option><option value="2009">2009</option><option value="2008">2008</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option>
                           </select>
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Modifier" class="btn btn-submit"></input>
+                      <input id="button" type="submit" value="Modifier" class="btn btn-submit" id="edit_form_btn_edit"></input>
                       <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Ajouter" class="btn btn-submit"></input>
+                      <input id="button" type="submit" value="Ajouter" class="btn btn-submit" id="edit_form_btn_add"></input>
                 </fieldset>
               </form>
 
+          </div>
+              
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
@@ -598,8 +628,8 @@
 
     <!-- JavaScript -->
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
-    <script type="text/javascript" src="dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="..//js/jquery.js"></script>
+    <script type="text/javascript" src="..//dist/js/bootstrap.js"></script>
 
     <!-- Custom JavaScript for the Menu Toggle -->
     <script>
@@ -608,5 +638,129 @@
         $("#wrapper").toggleClass("active");
     });
     </script>
+    <script>
+$(document).ready(function(){
+                    
+                    $("#edit_form_div").hide();
+                    $("#edit_exp_div").hide();
+                    $("#edit_projet_div").hide();
+                    $("#edit_competence_div").hide();
+                    $("#edit_langue_div").hide();
+                    
+                    
+                    $("a[id^=edit_form_]").click(function(){
+                        var id_formation = this.id.split('_')[2];
+                        $("#edit_form_btn_edit").show();
+                        $("#edit_form_btn_add").hide();
+
+                            $.ajax({
+                                type:'GET',
+                                url: "<%= request.getContextPath() %>/AjaxGetFormation?id="+id_formation,
+                                success: function(result){
+                                    $("#edit_form_ecole").val(result.split(',')[1]);
+                                    $("#edit_form_annee_debut option[value="+result.split(',')[2]+"]").attr("selected","selected");
+                                    $("#edit_form_annee_fin option[value="+result.split(',')[3]+"]").attr("selected","selected");
+                                    $("#edit_form_diplome").val(result.split(',')[4]);
+                                    $("#edit_form_desc").val(result.split(',')[5]);
+                                    $("#edit_form_div").show();
+
+                                }
+                            });
+
+           
+                    });
+                    
+                    $("a[id=add_formation_btn]").click(function(){
+                        $("#edit_form_btn_edit").hide();
+                        $("#edit_form_btn_add").show();
+                        
+                        $("#edit_form_ecole").val("");
+                        $("#edit_form_diplome").val("");
+                        $("#edit_form_desc").val("");
+                        $("#edit_form_div").show();
+                        $("#edit_form_annee_debut option:first-child").attr("selected","selected");
+                        $("#edit_form_annee_fin option:first-child").attr("selected","selected");
+                        
+                    });
+                    
+                    $("a[id^=edit_exp_]").click(function(){
+                        var id_experience = this.id.split('_')[2];
+                       
+                       $.ajax({
+                                type:'GET',
+                                url: "<%= request.getContextPath() %>/AjaxGetExperience?id="+id_experience,
+                                success: function(result){
+                                    $("#edit_exp_entreprise").val(result.split(",")[0]);
+                                    $("#edit_exp_titre").val(result.split(",")[1]);
+                                    $("#edit_exp_debut").val(result.split(",")[2]);
+                                    $("#edit_exp_fin").val(result.split(",")[3]);
+                                    $("#edit_exp_desc").val(result.split(",")[4]);
+                                    if(result.split(",")[5]=='true')
+                                        $("#edit_exp_encours").attr("checked","checked");
+                                    else
+                                        $("#edit_exp_encours").removeAttr("checked");
+                                    
+
+                                }
+                            });
+                        $("#edit_exp_div").show();
+                        $("#edit_exp_btn_edit").show();
+                        $("#edit_exp_btn_add").hide();
+                    });
+                    
+                    $("a[id=add_experience]").click(function(){
+                        $("#edit_exp_entreprise").val("");
+                        $("#edit_exp_titre").val("");
+                        $("#edit_exp_debut").val("");
+                        $("#edit_exp_fin").val("");
+                        $("#edit_exp_desc").val("");
+                        $("#edit_exp_encours").removeAttr("checked");
+                        
+                        $("#edit_exp_div").show();
+                        $("#edit_exp_btn_edit").hide();
+                        $("#edit_exp_btn_add").show();
+                    });
+                    
+                    $("a[id^=edit_projet_]").click(function(){
+                        var id_projet = this.id.split("_")[2];
+                        
+                        $.ajax({
+                                type:'GET',
+                                url: "<%= request.getContextPath() %>/AjaxGetProjet?id="+id_projet,
+                                success: function(result){
+                                    $("#edit_projet_nom").val(result.split(",")[1]);
+                                    $("#edit_projet_date").val(result.split(",")[2]);
+                                    $("#edit_projet_desc").val(result.split(",")[3]);
+                                    $("#edit_projet_fonction").val(result.split(",")[4]);
+                                    $("#edit_projet_lieu").val(result.split(",")[5]);
+                                }
+                            });
+                        
+                        $("#edit_projet_div").show();
+                        $("#edit_projet_btn_edit").show();
+                        $("#edit_projet_btn_add").hide();
+                    });
+                    
+                    $("a[id=add_projet]").click(function(){
+                        $("#edit_projet_nom").val("");
+                        $("#edit_projet_date").val("");
+                        $("#edit_projet_desc").val("");
+                        $("#edit_projet_fonction").val("");
+                        $("#edit_projet_lieu").val("");
+                        
+                        $("#edit_projet_div").show();
+                        $("#edit_projet_btn_edit").hide();
+                        $("#edit_projet_btn_add").show();
+                    });
+                    
+                    $("a[id=add_competence]").click(function(){
+                        $("#edit_competence_div").show();
+                    });
+                    
+                    $("a[id=add_langue]").click(function(){
+                        $("#edit_langue_div").show();
+                    });
+ });            
+            </script>
 </body>
 </html>

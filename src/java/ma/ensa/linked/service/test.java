@@ -5,6 +5,8 @@
  */
 package ma.ensa.linked.service;
 
+import ma.ensa.linked.metier.Utilisateur;
+
 /**
  *
  * @author PC
@@ -13,6 +15,6 @@ public class test {
     public static void main(String[] args)
     {
         //System.out.println(UtilisateurService.authentifierUtilisateur("admin", "admin"));
-        System.out.println(GroupeService.getGroupesByProf(ProfesseurService.getProfesseurById("yunho")));
+        System.out.println(UtilisateurService.authentifierUtilisateur("osm", "osm") );
     }
 }

@@ -37,11 +37,11 @@
               <div class="col-lg-3"></div>
               <div class="col-lg-6">
                 <h2>Se Connecter</h2>
-                <form class="form-horizontal">
+                <form class="form-horizontal" method="POST" action="AuthentificationServlet">
                   <fieldset>
                     <div class="form-group">
                       <div class="input-group">
-                        <input class="form-control" name="username" id="username" type="text" value="" tabindex="1" placeholder="Username">
+                        <input class="form-control" name="login" id="username" type="text" value="" tabindex="1" placeholder="Username">
                         <span class="input-group-addon">
                           <span class="glyphicon glyphicon-user"></span>
                         </span>

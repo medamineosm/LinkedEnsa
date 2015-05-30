@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import ma.ensa.linked.metier.TypeCompte;
 import ma.ensa.linked.metier.Utilisateur;
 import ma.ensa.linked.service.UtilisateurService;
 
@@ -37,7 +38,14 @@ public class AuthentificationServlet extends HttpServlet {
             else
             {
                 request.getSession().setAttribute("user", user);
-                request.getRequestDispatcher("/WEB-INF/administration/acceuil_admin.jsp").forward(request, response);
+                if(user.getType()==TypeCompte.ETUDIANT)
+                {
+                    request.getRequestDispatcher("/WEB-INF/intermaidiare.jsp").forward(request, response);
+                    //request.getRequestDispatcher("etudiant/profil").forward(request, response);
+                }else{
+                    request.getRequestDispatcher("/WEB-INF/administration/acceuil_admin.jsp").forward(request, response);
+                }
+                
             }
         }
     }

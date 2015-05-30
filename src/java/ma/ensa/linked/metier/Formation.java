@@ -12,48 +12,48 @@ import java.util.Date;
  * @author PC
  */
 public class Formation {
-    private Ecole ecole;
-    private Date annee_debut;
-    private Date annee_fin;
+    
+    private int identifiant;
+    private String nom_ecole;
+    private int annee_debut;
+    private int annee_fin;
     private String diplome;
     private String description;
-    private Etudiant etudiant;
+    private Ecole ecole;
 
-    public Formation() {
+    public int getIdentifiant() {
+        return identifiant;
     }
 
-    public Formation(Ecole ecole, Date annee_debut, Date annee_fin, String diplome, String description, Etudiant etudiant) {
-        this.ecole = ecole;
-        this.annee_debut = annee_debut;
-        this.annee_fin = annee_fin;
-        this.diplome = diplome;
-        this.description = description;
-        this.etudiant = etudiant;
+    public void setIdentifiant(int identifiant) {
+        this.identifiant = identifiant;
     }
 
-    public Ecole getEcole() {
-        return ecole;
+    public String getNom_ecole() {
+        return nom_ecole;
     }
 
-    public void setEcole(Ecole ecole) {
-        this.ecole = ecole;
+    public void setNom_ecole(String nom_ecole) {
+        this.nom_ecole = nom_ecole;
     }
 
-    public Date getAnnee_debut() {
+    public int getAnnee_debut() {
         return annee_debut;
     }
 
-    public void setAnnee_debut(Date annee_debut) {
+    public void setAnnee_debut(int annee_debut) {
         this.annee_debut = annee_debut;
     }
 
-    public Date getAnnee_fin() {
+    public int getAnnee_fin() {
         return annee_fin;
     }
 
-    public void setAnnee_fin(Date annee_fin) {
+    public void setAnnee_fin(int annee_fin) {
         this.annee_fin = annee_fin;
     }
+
+    
 
     public String getDiplome() {
         return diplome;
@@ -71,13 +71,21 @@ public class Formation {
         this.description = description;
     }
 
-    public Etudiant getEtudiant() {
-        return etudiant;
+    public Ecole getEcole() {
+        return ecole;
     }
 
-    public void setEtudiant(Etudiant etudiant) {
-        this.etudiant = etudiant;
+    public void setEcole(Ecole ecole) {
+        this.ecole = ecole;
     }
+
+    @Override
+    public String toString() {
+        return "Formation{" + "identifiant=" + identifiant + ", nom_ecole=" + nom_ecole + ", annee_debut=" + annee_debut + ", annee_fin=" + annee_fin + ", diplome=" + diplome + ", description=" + description + ", ecole=" + ecole + '}';
+    }
+    
+    
+
     
     
 }
