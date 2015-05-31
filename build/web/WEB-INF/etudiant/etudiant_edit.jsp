@@ -271,8 +271,8 @@
                         <img class="media-object" src="../images/icons/competence.png">
                       </div>
                       <div class="media-body">
-                        <h3>COMPÉTENCES</h3>
-                        <p>Compétences Techniques</p>
+                        <h3>COMPETENCES</h3>
+                        <p>Competences Techniques</p>
                       </div>
                     </div>
                   </div>
@@ -282,37 +282,24 @@
               <div class="competence-content">
                 <div class="col-lg-12">
                   <ul>
+                   <%
+                    for(Competence comp : etudiant.getCompetences())
+                    {
+                    %>
                     <li>
-                      <span class="label-competence">New</span>
-                      <!-- update btn -->
-                      <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </li>
-                    <li>
-                      <span class="label-competence">Java</span>
-                      <!-- update btn -->
-                      <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </li>
-                    <li>
-                      <span class="label-competence">C++</span>
-                      <!-- update btn -->
-                      <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </li>
-                    <li>
-                      <span class="label-competence">Netbeans</span>
-                      <!-- update btn -->
-                      <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </li>
-                    <li>
-                      <span class="label-competence">Meta</span>
-                      <!-- update btn -->
-                      <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                    </li>
+                      <span class="label-competence"><%= comp.getNom() %></span>
+
+                      <!-- delete btn -->
+                      <a data-toggle="modal"  data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+                    <%
+                      }
+                    %>
                   </ul>
                 </div>
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
-                  <a data-toggle="modal" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
+                  <a data-toggle="modal" id="add_competence_btn" data-target="#add_competence" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
                 </div>
               </div>
               <!-- FIN Section des Compétences  -->
@@ -339,33 +326,26 @@
               <div class="langue-content">
                 <div class="col-lg-12">
                   <ul>
+                    <%
+                    for(Langue langue : etudiant.getLangues())
+                    {
+                    %>
                     <li>
                       <div class="langue">
-                        <span class="label-langue">Arabe</span><span class="niveau-langue" >Langue maternelle.</span>
-                        <!-- update btn -->
-                        <a data-toggle="modal" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <span class="label-langue"><%= langue.getIntitule()%></span><span class="niveau-langue" ><%=langue.getNiveau()%></span>
+                        <!-- delete btn -->
+                        <a data-toggle="modal" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-remove"></span></a>
                       </div>
                     </li>
-                    <li>
-                      <div class="langue">
-                        <span class="label-langue">Français</span><span class="niveau-langue" >Langue courante.</span>
-                        <!-- update btn -->
-                        <a data-toggle="modal" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="langue">
-                        <span class="label-langue">Anglais</span><span class="niveau-langue" >Bon niveau.</span>
-                        <!-- update btn -->
-                        <a data-toggle="modal" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                      </div>
-                    </li>
+                    <%
+                      }
+                    %>
                   </ul>
                 </div>
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
-                  <a data-toggle="modal" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
+                  <a data-toggle="modal" id="add_langue_btn" data-target="#add_langue" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
                 </div>
 
               </div>
@@ -560,20 +540,22 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Gestion Compétence</h4>
           </div>
+          <div id="edit_competence_div">
           <div class="modal-body">
 
               <form class="bs-example form-horizontal" method="POST" action="">
                 <fieldset>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="nom_langue" placeholder="Intitule Compétence" type="text">
+                          <input class="form-control" name="competence" placeholder="Intitule Compétence" type="text">
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
+                      
                       <input id="button" type="submit" value="Ajouter" class="btn btn-submit"></input>
                 </fieldset>
               </form>
 
+          </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
@@ -590,13 +572,14 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Gestion Langue</h4>
           </div>
+          <div id="edit_langue_div">
           <div class="modal-body">
 
               <form class="bs-example form-horizontal" method="POST" action="">
                 <fieldset>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="nom_langue" placeholder="Intitule Langue" type="text">
+                          <input class="form-control" name="langue"  placeholder="Intitule Langue" type="text">
                         </div>
                       </div>
                       <div class="form-group">
@@ -604,12 +587,11 @@
                           <input class="form-control" name="niveau" placeholder="Niveau" type="text">
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Modifier" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
                       <input id="button" type="submit" value="Ajouter" class="btn btn-submit"></input>
                 </fieldset>
               </form>
 
+          </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
@@ -740,7 +722,7 @@ $(document).ready(function(){
                         $("#edit_projet_btn_add").show();
                     });
                     
-                    $("a[id=add_competence]").click(function(){
+                    $("a[id=add_competence_btn]").click(function(){
                         $("#edit_competence_div").show();
                     });
                     
