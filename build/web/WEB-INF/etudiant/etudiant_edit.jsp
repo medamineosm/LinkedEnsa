@@ -147,14 +147,14 @@
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
-                  <a data-toggle="modal" data-target="#add_formation" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
+                  <a data-toggle="modal" data-target="#add_formation" id="add_formation_btn" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
                 </div>
                 
               </div>
               <!-- FIN Section des formation  -->
 
               <!-- Section des Expériences  -->
-                            <div class="section-title  experience-title">
+              <div class="section-title  experience-title">
                 <div class="col-lg-12">
                   <div class="sub-line"></div>
                   <div class="sub-title">
@@ -190,23 +190,21 @@
                       <p><%= exp.getDescription() %></p>
                     </div>
                   </div>
-                </div>
+                
+                <!-- button update -->
+                  <div class="col-lg-12 update-btn">
+                    <a data-toggle="modal" id="edit_exp_<%= exp.getIdentifiant()%>" data-target="#add_experience" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                  </div>
+
+                  </div>
                 <%
                 }
                 %>
-              </div>
-                  <!-- button update -->
-                  <div class="col-lg-12 update-btn">
-                    <a data-toggle="modal" data-target="#add_experience" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                  </div>
-                </div>
-                
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
-                  <a data-toggle="modal" data-target="#add_experience" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
+                  <a data-toggle="modal" id="add_experience_btn"data-target="#add_experience" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
                 </div>
-
               </div>
               <!-- FIN Section des Expériences  -->
 
@@ -229,47 +227,35 @@
               </div>
 
               <div class="projet-content">
-
+                <%
+                for(Projet projet : etudiant.getProjets())
+                {
+                %>
                 <!-- pour chaque experience -->
                 <div class="col-lg-12 projet">
                   <div class="projet-iner col-lg-12">
                     <div class="col-lg-8">
-                      <h4>Titre projet</h4>
-                      <p>Description</p>
-                      <p>poste</p>
+                      <h4><%= projet.getNom()%></h4>
+                      <p><%= projet.getDescription() %></p>
+                      <p><%=projet.getFonction() %></p>
                     </div>
                     <div class="col-lg-4 right-side-content">
-                      <p><span class="glyphicon glyphicon-map-marker"></span>Lieu : </p>
-                      <p><span class="glyphicon glyphicon-calendar"></span>Date : </p>
+                      <p><span class="glyphicon glyphicon-map-marker"></span>Lieu : <%=projet.getLieu() %></p>
+                      <p><span class="glyphicon glyphicon-calendar"></span>Date : <%= format_date.format(projet.getDate()) %></p>
                     </div>
                   </div>
                   <!-- button update -->
                   <div class="col-lg-12 update-btn">
-                    <a data-toggle="modal" data-target="#add_projet" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <a data-toggle="modal" id="edit_projet_<%= projet.getIdentifiant() %>" data-target="#add_projet" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
                   </div>
                 </div>
-                <!-- pour chaque experience -->
-                <div class="col-lg-12 projet">
-                  <div class="projet-iner col-lg-12">
-                    <div class="col-lg-8">
-                      <h4>Titre projet</h4>
-                      <p>Description</p>
-                      <p>poste</p>
-                    </div>
-                    <div class="col-lg-4 right-side-content">
-                      <p><span class="glyphicon glyphicon-map-marker"></span>Lieu : </p>
-                      <p><span class="glyphicon glyphicon-calendar"></span>Date : </p>
-                    </div>
-                  </div>
-                  <!-- button update -->
-                  <div class="col-lg-12 update-btn">
-                    <a data-toggle="modal" data-target="#add_projet" class="pull-right"><span class="glyphicon glyphicon-pencil"></span></a>
-                  </div>
-                </div>
+                <%
+                }
+                %>
 
                 <!-- button add -->
                 <div class="col-lg-12 add-btn">
-                  <a data-toggle="modal" data-target="#add_projet" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
+                  <a data-toggle="modal"id="add_projet_btn" data-target="#add_projet" class="pull-right"><span class="glyphicon glyphicon-plus"></span>Ajouter</a>
                 </div>
 
               </div>
@@ -440,9 +426,9 @@
                           </select>
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Modifier" class="btn btn-submit" id="edit_form_btn_edit"></input>
-                      <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Ajouter" class="btn btn-submit" id="edit_form_btn_add"></input>
+                      <input  type="submit" value="Modifier" id="edit_form_btn_edit"class="btn btn-submit" ></input>
+                      
+                      <input  type="submit" value="Ajouter" id="edit_form_btn_add" class="btn btn-submit" ></input>
                 </fieldset>
               </form>
 
@@ -464,41 +450,48 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Gestion Experience</h4>
           </div>
+          <div id="edit_exp_div">
           <div class="modal-body">
 
               <form class="bs-example form-horizontal" method="POST" action="">
                 <fieldset>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="date_debut" placeholder="Date debut" type="date">
+                          <input class="form-control" name="debut" id="edit_exp_debut" placeholder="Date debut" type="date">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="date_fin" placeholder="Date fin" type="date">
+                          <input class="form-control" name="fin" id="edit_exp_fin" placeholder="Date fin" type="date">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="titre_experience" placeholder="Titre" type="text">
+                          <input class="form-control" id="edit_exp_titre" name="titre" placeholder="Titre" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="entreprise_experience" placeholder="Entreprise" type="text">
+                          <input class="form-control" name="entreprise" id="edit_exp_entreprise" placeholder="Entreprise" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <textarea class="form-control" name="description_experience" placeholder="Description"></textarea>
+                          <textarea class="form-control" id="edit_exp_desc" placeholder="Description"></textarea>
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Modifier" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Ajouter" class="btn btn-submit"></input>
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" name="en_cours" id="edit_exp_encours"> En cours ?
+                        </label>
+                      </div>
+                      <input id="edit_exp_btn_edit" type="submit" value="Modifier" class="btn btn-submit"></input>
+                      
+                      <input id="edit_exp_btn_add" type="submit" value="Ajouter" class="btn btn-submit"></input>
                 </fieldset>
               </form>
 
+          </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
@@ -515,41 +508,42 @@
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
             <h4 class="modal-title">Gestion Projet</h4>
           </div>
+          <div id="edit_projet_div">
           <div class="modal-body">
 
               <form class="bs-example form-horizontal" method="POST" action="">
                 <fieldset>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="titre_projet" placeholder="Titre Projet" type="text">
+                          <input class="form-control" id="edit_projet_nom" name="nom" placeholder="Titre Projet" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="poste_projet" placeholder="Poste" type="text">
+                          <input class="form-control" id="edit_projet_fonction" name="fonction" placeholder="Poste" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <textarea class="form-control" name="description_projet" placeholder="Description"></textarea>
+                          <textarea class="form-control" name="desc" id="edit_projet_desc" placeholder="Description"></textarea>
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="lieu_projet" placeholder="Lieu" type="text">
+                          <input class="form-control" id="edit_projet_lieu" name="lieu" placeholder="Lieu" type="text">
                         </div>
                       </div>
                       <div class="form-group">
                         <div class="col-lg-12">
-                          <input class="form-control" name="dateprojet" placeholder="Date" type="date">
+                          <input class="form-control" id="edit_projet_date" name="date_projet" placeholder="Date" type="date">
                         </div>
                       </div>
-                      <input id="button" type="submit" value="Modifier" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Supprimer" class="btn btn-submit"></input>
-                      <input id="button" type="submit" value="Ajouter" class="btn btn-submit"></input>
+                      <input id="edit_projet_btn_edit" type="submit" value="Modifier" class="btn btn-submit"></input>
+                      <input id="edit_projet_btn_add" type="submit" value="Ajouter" class="btn btn-submit"></input>
                 </fieldset>
               </form>
 
+          </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-close" data-dismiss="modal">Close</button>
@@ -641,11 +635,6 @@
     <script>
 $(document).ready(function(){
                     
-                    $("#edit_form_div").hide();
-                    $("#edit_exp_div").hide();
-                    $("#edit_projet_div").hide();
-                    $("#edit_competence_div").hide();
-                    $("#edit_langue_div").hide();
                     
                     
                     $("a[id^=edit_form_]").click(function(){
@@ -666,8 +655,6 @@ $(document).ready(function(){
 
                                 }
                             });
-
-           
                     });
                     
                     $("a[id=add_formation_btn]").click(function(){
@@ -708,7 +695,7 @@ $(document).ready(function(){
                         $("#edit_exp_btn_add").hide();
                     });
                     
-                    $("a[id=add_experience]").click(function(){
+                    $("a[id=add_experience_btn]").click(function(){
                         $("#edit_exp_entreprise").val("");
                         $("#edit_exp_titre").val("");
                         $("#edit_exp_debut").val("");
@@ -741,7 +728,7 @@ $(document).ready(function(){
                         $("#edit_projet_btn_add").hide();
                     });
                     
-                    $("a[id=add_projet]").click(function(){
+                    $("a[id=add_projet_btn]").click(function(){
                         $("#edit_projet_nom").val("");
                         $("#edit_projet_date").val("");
                         $("#edit_projet_desc").val("");
