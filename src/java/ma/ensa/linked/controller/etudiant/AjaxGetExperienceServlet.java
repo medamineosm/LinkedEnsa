@@ -16,7 +16,7 @@ import ma.ensa.linked.service.ExperienceService;
 
 /**
  *
- * @author Yunho
+ * @author Yunhoo
  */
 @WebServlet(name = "AjaxGetExperienceServlet", urlPatterns = {"/AjaxGetExperience"})
 public class AjaxGetExperienceServlet extends HttpServlet {
